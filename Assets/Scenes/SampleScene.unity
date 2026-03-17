@@ -2445,7 +2445,7 @@ MonoBehaviour:
   bulletSpeed: 8
   shootInterval: 20
   bulletSpawn: {fileID: 139054764}
-  bulletPrefab: {fileID: 4955501932434198174, guid: 6a50370ef46f1e142a1d1f1fba9c21c2, type: 3}
+  BulletPrefab: {fileID: 3584468594991389559, guid: e2986f24cdfe1254599b39b20df240e6, type: 3}
 --- !u!1 &539468241
 GameObject:
   m_ObjectHideFlags: 0
@@ -3230,7 +3230,7 @@ MonoBehaviour:
   bulletSpeed: 8
   shootInterval: 20
   bulletSpawn: {fileID: 707458899}
-  bulletPrefab: {fileID: 4955501932434198174, guid: 6a50370ef46f1e142a1d1f1fba9c21c2, type: 3}
+  BulletPrefab: {fileID: 3584468594991389559, guid: e2986f24cdfe1254599b39b20df240e6, type: 3}
 --- !u!1 &707458898
 GameObject:
   m_ObjectHideFlags: 0

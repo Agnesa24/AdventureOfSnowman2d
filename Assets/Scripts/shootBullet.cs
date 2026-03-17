@@ -9,7 +9,7 @@ public class shootBullet : MonoBehaviour
 
     [Header("Object References")]
     [SerializeField] private Transform bulletSpawn;
-    [SerializeField] private Rigidbody2D bulletPrefab;
+    [SerializeField] private Rigidbody2D BulletPrefab;
 
     private Transform purly;
 
@@ -23,7 +23,7 @@ public class shootBullet : MonoBehaviour
     private void HandleShooting()
     {
         Debug.Log("Snowgun fired");
-        Rigidbody2D bullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity); //Spawn the bullet at bulletSpawn.position + With no rotation
+        Rigidbody2D bullet = Instantiate(BulletPrefab, bulletSpawn.position, Quaternion.identity); //Spawn the bullet at bulletSpawn.position + With no rotation
 
                 Vector2 direction = (purly.position - bulletSpawn.position).normalized;
 

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8652289812127245678}
   m_Layer: 0
   m_Name: BulletPre
-  m_TagString: Untagged
+  m_TagString: bulletTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -168,5 +168,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae082159d3e553b4eab12136791f4225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::bullet
-  speed: 6
   bulletLifetime: 10

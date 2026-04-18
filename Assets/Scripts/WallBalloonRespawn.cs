@@ -23,10 +23,10 @@ public class WallBalloonRespawn : MonoBehaviour
 
     void SpawnNewBalloon()
     {
-        Vector3 spawnPos = wallSpawnPoint.position;
-        spawnPos.z = 0;
-        spawnPos += wallSpawnPoint.up * 0.5f;
-        Instantiate(balloonPrefab, spawnPos, Quaternion.identity);
+        //Vector3 spawnPos = wallSpawnPoint.position;
+        //spawnPos.z = 0;
+        //spawnPos += wallSpawnPoint.up * 0.5f;
+        Instantiate(balloonPrefab, wallSpawnPoint.position, Quaternion.identity);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -36,12 +36,13 @@ public class WallBalloonRespawn : MonoBehaviour
             popped = true;
             FindAnyObjectByType<ScoreManager>().AddScore(); // handles GameData.score++ too
             Invoke(nameof(SpawnNewBalloon), 2f);
-            Invoke(nameof(DestroySelf), 2f);
+            Invoke(nameof(HideBalloon), 0f); // hide immediately
         }
     }
 
-    void DestroySelf()
+    void HideBalloon()
     {
-        Destroy(gameObject);
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
     }
 }

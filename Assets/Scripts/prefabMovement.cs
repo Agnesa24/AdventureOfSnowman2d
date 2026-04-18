@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 /*public class prefabMovement : MonoBehaviour
@@ -112,5 +113,11 @@ public class prefabMovement : MonoBehaviour
     {
         float rot = rotate.ReadValue<float>();
         rb.MoveRotation(rb.rotation - rot * rotationSpeed * Time.deltaTime);
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Time.timeScale = 0f;
+            SceneManager.LoadScene("MenuScene");
+        }
     }
 }

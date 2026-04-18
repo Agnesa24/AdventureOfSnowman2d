@@ -14,7 +14,8 @@ public class bullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("purly"))
         {
-            GameData.SaveScore();
+            string playerName = PlayerPrefs.GetString("PlayerName", "Unknown");
+            GameData.SaveScore(playerName);
             Destroy(collision.gameObject);
             SceneManager.LoadScene("MenuScene");
         }

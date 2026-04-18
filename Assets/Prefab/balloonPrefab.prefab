@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 2447031055610152258}
   - component: {fileID: 7874631125363697118}
   - component: {fileID: 2208017708508355760}
-  - component: {fileID: -2252357118592710270}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: balloonPrefab
   m_TagString: balloonTag
   m_Icon: {fileID: 0}
@@ -29,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1641454850027869516}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.68791884, w: 0.72578764}
-  m_LocalPosition: {x: -17.049, y: 1.8413, z: 0}
+  m_LocalPosition: {x: -17.049, y: 1.8413, z: 5}
   m_LocalScale: {x: 0.24180374, y: 0.2404731, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -69,8 +68,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.020227354, y: 0.3364213}
-  m_Radius: 3.9946856
+  m_Offset: {x: -0.042490188, y: 0.114464164}
+  m_Radius: 4.3016562
 --- !u!212 &7874631125363697118
 SpriteRenderer:
   serializedVersion: 2
@@ -157,17 +156,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &-2252357118592710270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1641454850027869516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 493b4ecbf19fdbf45867d9bbad959abc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WallBalloonRespawn
-  balloonPrefab: {fileID: 0}
-  wallSpawnPoint: {fileID: 0}

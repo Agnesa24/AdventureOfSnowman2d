@@ -8,7 +8,8 @@ public class HighScoreDisplay : MonoBehaviour
 
     void Start()
     {
-        List<int> scores = GameData.GetScores();
+        Time.timeScale = 1f;
+        List<(string name, int score)> scores = GameData.GetScores();
 
         if (scores.Count == 0)
         {

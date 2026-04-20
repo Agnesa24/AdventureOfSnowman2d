@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TMP_InputField nameInput;
 
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -43,6 +44,7 @@ public class PauseMenu : MonoBehaviour
     public void NewGameButton()
     {
         GameData.score = 0;
+        GameData.hasSaved = false;
         Time.timeScale = 1f;
         SceneManager.LoadScene("SampleScene");
     }
@@ -58,20 +60,34 @@ public class PauseMenu : MonoBehaviour
         string playerName = nameInput.text;
         PlayerPrefs.SetString("PlayerName", playerName);
         PlayerPrefs.Save();
-        GameData.SaveScore(playerName);
+        //GameData.SaveScore(playerName);
     }
 
     public void HighScoreButton()
     {
-        // Save score BEFORE switching scenes
-        if (nameInput != null && !string.IsNullOrWhiteSpace(nameInput.text))
+        if (!string.IsNullOrWhiteSpace(nameInput.text))
         {
             GameData.playerName = nameInput.text;
+        }
+
+        // Save only once here the player name 
+        if (!GameData.hasSaved && !string.IsNullOrWhiteSpace(GameData.playerName))
+        {
             GameData.SaveScore(GameData.playerName);
+            GameData.hasSaved = true;
         }
 
         Time.timeScale = 1f;
         SceneManager.LoadScene("HighScoreScene");
     }
+
+
+    //public void SaveAtGameOver()
+    //{
+    //    if (!string.IsNullOrWhiteSpace(GameData.playerName))
+    //    {
+    //        GameData.SaveScore(GameData.playerName);
+    //    }
+    //}
 
 }

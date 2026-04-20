@@ -39,9 +39,9 @@ public class shootBulletLeft : MonoBehaviour
         //bullet.linearVelocity = direction * bulletSpeed;// applies the movement to the bullet
 
         Vector2 randomPosition = new Vector2(
-           Random.Range(-8.3f, 7.84f),
-           Random.Range(-4.40f, -4.40f)
-       );
+            Random.Range(-7.77f, 7.67f),
+            Random.Range(-4.13f, -4.13f)
+        );
         bullet.linearVelocity = randomPosition * bulletSpeed;
     }
 }

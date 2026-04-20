@@ -34,8 +34,11 @@ public class shootBulletRight : MonoBehaviour
         //Vector2 direction = Vector2.left; //will shoot the bullet to the left, which is the direction of the right cannon
         //bullet.linearVelocity = direction * bulletSpeed;// applies the movement to the bullet
 
-        Vector2 direction = new Vector2(-1f, 0.3f); // left + slight up
-        bullet.linearVelocity = direction * bulletSpeed;
+        Vector2 randomPosition = new Vector2(
+            Random.Range(-8.3f, 7.84f),
+            Random.Range(-4.40f, -4.40f)
+        );
+        bullet.linearVelocity = randomPosition * bulletSpeed;
 
     }
 }

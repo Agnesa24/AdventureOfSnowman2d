@@ -1,14 +1,24 @@
 using UnityEngine;
-using TMPro; 
+using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
-    private int score = 0;
+
+    void Start()
+    {
+        GameData.score = 0; // reset at start of game
+        UpdateUI();
+    }
 
     public void AddScore()
     {
         GameData.score++;
-        scoreText.text = "Score: " + GameData.score.ToString();
+        UpdateUI();
+    }
+
+    void UpdateUI()
+    {
+        scoreText.text = "Score: " + GameData.score;
     }
 }

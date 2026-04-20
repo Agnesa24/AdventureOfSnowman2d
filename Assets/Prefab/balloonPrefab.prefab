@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2596766787257265423}
   - component: {fileID: 2447031055610152258}
   - component: {fileID: 7874631125363697118}
-  - component: {fileID: 2208017708508355760}
-  m_Layer: 3
+  - component: {fileID: -3286868652193386398}
+  m_Layer: 6
   m_Name: balloonPrefab
   m_TagString: balloonTag
   m_Icon: {fileID: 0}
@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 1641454850027869516}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.68791884, w: 0.72578764}
-  m_LocalPosition: {x: -17.049, y: 1.8413, z: 5}
-  m_LocalScale: {x: 0.24180374, y: 0.2404731, z: 1}
+  m_LocalPosition: {x: -17.407, y: 2.0919, z: 5}
+  m_LocalScale: {x: 0.16942032, y: 0.15964107, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -129,30 +129,16 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!50 &2208017708508355760
-Rigidbody2D:
-  serializedVersion: 5
+--- !u!114 &-3286868652193386398
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1641454850027869516}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e78849f4230466b439f04367aeed8db9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Balloon
+  spawner: {fileID: 0}

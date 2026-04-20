@@ -1363,7 +1363,7 @@ Transform:
   m_GameObject: {fileID: 248598545}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.61, y: 0.22, z: 6.46}
+  m_LocalPosition: {x: 10.59, y: 0.35, z: 6.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1702,6 +1702,7 @@ GameObject:
   m_Component:
   - component: {fileID: 307891312}
   - component: {fileID: 307891313}
+  - component: {fileID: 307891314}
   m_Layer: 0
   m_Name: spawnRIght
   m_TagString: Untagged
@@ -1718,7 +1719,7 @@ Transform:
   m_GameObject: {fileID: 307891311}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.04013, y: -1.1240699, z: 0}
+  m_LocalPosition: {x: 6.04, y: -0.94, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1737,8 +1738,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WallBalloonRespawn
   balloonPrefab: {fileID: 1641454850027869516, guid: 6b0d4d31f06b99e47b294cf2c997a2cd, type: 3}
-  minSpawn: {x: 7.82, y: -4.19}
-  maxSpawn: {x: 7.82, y: 2.55}
+  minSpawn: {x: 6.04, y: -4.82}
+  maxSpawn: {x: 6.04, y: 1.65}
+--- !u!58 &307891314
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307891311}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5
 --- !u!1 &343295140
 GameObject:
   m_ObjectHideFlags: 0
@@ -2929,6 +2966,90 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 539468241}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &594486006
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 594486007}
+  - component: {fileID: 594486008}
+  - component: {fileID: 594486009}
+  m_Layer: 0
+  m_Name: spawnTop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &594486007
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594486006}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.86, y: 2.63, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1944073060}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &594486008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594486006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 493b4ecbf19fdbf45867d9bbad959abc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WallBalloonRespawn
+  balloonPrefab: {fileID: 1641454850027869516, guid: 6b0d4d31f06b99e47b294cf2c997a2cd, type: 3}
+  minSpawn: {x: 4.88, y: 2.6}
+  maxSpawn: {x: -8.57, y: 2.6}
+--- !u!58 &594486009
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594486006}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5
 --- !u!1 &599334791
 GameObject:
   m_ObjectHideFlags: 0
@@ -4324,90 +4445,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   scoreText: {fileID: 1856239952}
---- !u!1 &800499463
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 800499464}
-  - component: {fileID: 800499466}
-  - component: {fileID: 800499465}
-  m_Layer: 0
-  m_Name: spawnTop
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &800499464
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 800499463}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.87, y: 2.67, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1944073060}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &800499465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 800499463}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 493b4ecbf19fdbf45867d9bbad959abc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WallBalloonRespawn
-  balloonPrefab: {fileID: 1641454850027869516, guid: 6b0d4d31f06b99e47b294cf2c997a2cd, type: 3}
-  minSpawn: {x: -8.5, y: 2.62}
-  maxSpawn: {x: -86, y: 2.62}
---- !u!58 &800499466
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 800499463}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
 --- !u!1 &940566370
 GameObject:
   m_ObjectHideFlags: 0
@@ -4824,7 +4861,7 @@ Transform:
   m_GameObject: {fileID: 1092867365}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.66, y: 0.24, z: 5.83}
+  m_LocalPosition: {x: 9.66, y: 0.27, z: 5.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5574,6 +5611,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1183588706}
   - component: {fileID: 1183588707}
+  - component: {fileID: 1183588708}
   m_Layer: 0
   m_Name: spawnLeft
   m_TagString: Untagged
@@ -5590,7 +5628,7 @@ Transform:
   m_GameObject: {fileID: 1183588705}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.59987, y: -1.18407, z: 0}
+  m_LocalPosition: {x: -9.32, y: -0.89, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5609,8 +5647,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WallBalloonRespawn
   balloonPrefab: {fileID: 1641454850027869516, guid: 6b0d4d31f06b99e47b294cf2c997a2cd, type: 3}
-  minSpawn: {x: 0, y: 0}
-  maxSpawn: {x: 0, y: 0}
+  minSpawn: {x: -9.3, y: -4.55}
+  maxSpawn: {x: -9.3, y: 1.82}
+--- !u!58 &1183588708
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183588705}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5
 --- !u!1 &1229285193
 GameObject:
   m_ObjectHideFlags: 0
@@ -6114,7 +6188,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1330466649}
-  - component: {fileID: 1330466650}
   - component: {fileID: 1330466651}
   - component: {fileID: 1330466652}
   m_Layer: 0
@@ -6133,24 +6206,12 @@ Transform:
   m_GameObject: {fileID: 1330466648}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.61987, y: -4.9740696, z: 0}
+  m_LocalPosition: {x: -1.58, y: -4.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1944073060}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1330466650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1330466648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c98e28a0f53809d43b3a9b01ccd017cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::spawnBottom
 --- !u!58 &1330466651
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6200,8 +6261,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WallBalloonRespawn
   balloonPrefab: {fileID: 1641454850027869516, guid: 6b0d4d31f06b99e47b294cf2c997a2cd, type: 3}
-  minSpawn: {x: -7.69, y: -4.2}
-  maxSpawn: {x: 7.83, y: -4.2}
+  minSpawn: {x: -9.46, y: -4.82}
+  maxSpawn: {x: 5.9, y: -4.82}
 --- !u!1 &1358956151
 GameObject:
   m_ObjectHideFlags: 0
@@ -7281,7 +7342,7 @@ Transform:
   m_GameObject: {fileID: 1742138049}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.73, y: 0.21, z: 5.17}
+  m_LocalPosition: {x: 8.7, y: 0.37, z: 5.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8389,7 +8450,7 @@ Transform:
   - {fileID: 1330466649}
   - {fileID: 307891312}
   - {fileID: 1183588706}
-  - {fileID: 800499464}
+  - {fileID: 594486007}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1972535832

@@ -5,78 +5,63 @@ using UnityEngine.SceneManagement;
 public class Pause : MonoBehaviour
 {
     public GameObject container;
-    public static int score = 0;
     public TextMeshProUGUI scoreText;
     public TMP_InputField nameInput;
-    public string playerName;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape)) // Check if the Escape key is pressed
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            container.SetActive(true); // Show the pause menu by activating the container GameObject
-            Time.timeScale = 0f; // Pause the game by setting timeScale to 0
+            if (Time.timeScale == 0f)
+            {
+                ResumeButton();
+            }
+            else
+            {
+                PauseButton();
+            }
         }
+
         if (scoreText != null)
         {
-            scoreText.text = "Score: " + score;
+            scoreText.text = "Score: " + GameData.score;
         }
     }
 
-    /*public void ResumeButton()
+    public void PauseButton()
     {
-        container.SetActive(false); // Hide the pause menu by deactivating the container GameObject
-        Time.timeScale = 1f; // Resume the game by setting timeScale back to 1
-    }
-    */
-    public void NewGameButton()
-    {
-        SceneManager.LoadScene("SampleScene"); // Reload the current scene to start a new game
+        container.SetActive(true);
+        Time.timeScale = 0f;
     }
 
-    public void SavedGameButton()
+    public void ResumeButton()
     {
-        Debug.Log("SavedGameButton called"); // check Console for this
         container.SetActive(false);
         Time.timeScale = 1f;
     }
+
+    public void NewGameButton()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("SampleScene");
+    }
+
     public void ExitButton()
     {
-        Debug.Log("Quit button pressed");
         Application.Quit();
     }
 
     public void EnterNameButton()
     {
-        playerName = nameInput.text;
+        string playerName = nameInput.text;
         PlayerPrefs.SetString("PlayerName", playerName);
         PlayerPrefs.Save();
-        Debug.Log("Player name saved: " + playerName);
     }
 
     public void HighScoreButton()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("HighScoreScene");
-        Time.timeScale = 0f;
-
     }
 
-    public void PauseButton()
-    {
-        container.SetActive(true); // Show the pause menu by activating the container GameObject
-        if(Time.timeScale != 0f) {
-            Time.timeScale = 0f;
-        }
-        else
-        {
-            Time.timeScale = 1f;
-        }
-            // Pause the game by setting timeScale to 0
-    }
 }

@@ -30,7 +30,7 @@ public class shootBulletLeft : MonoBehaviour
     private void HandleShooting()
     {
 
-        Debug.Log("Snowgun fired");
+        //Debug.Log("Snowgun fired");
 
         Rigidbody2D bullet = Instantiate(BulletPrefab, bulletSpawn.position, Quaternion.identity); //creates the spawn position of the bullet prefab 
 
@@ -38,7 +38,10 @@ public class shootBulletLeft : MonoBehaviour
         //Vector2 direction = Vector2.right; //will shoot the bullet to the right, which is the direction of the left cannon
         //bullet.linearVelocity = direction * bulletSpeed;// applies the movement to the bullet
 
-        Vector2 direction = new Vector2(1f, 0.3f); // right + slight up
-        bullet.linearVelocity = direction * bulletSpeed;
+        Vector2 randomPosition = new Vector2(
+           Random.Range(-8.3f, 7.84f),
+           Random.Range(-4.40f, -4.40f)
+       );
+        bullet.linearVelocity = randomPosition * bulletSpeed;
     }
 }

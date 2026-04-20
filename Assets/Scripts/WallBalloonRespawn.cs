@@ -1,48 +1,34 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WallBalloonRespawn : MonoBehaviour
 {
     public GameObject balloonPrefab;
-    public Transform wallSpawnPoint;
 
-    private bool popped = false;
+    public Vector2 minSpawn;
+    public Vector2 maxSpawn;
 
-   /*private void OnTriggerEnter2D(Collider2D collision)
+    private GameObject currentBalloon;
+
+    void Start()
     {
-        if (collision.CompareTag("purly") && !popped)
-        {
-            popped = true;
-            GameData.score++;
-            FindAnyObjectByType<ScoreManager>().AddScore();
-
-            // Delay destroy to match the spawn delay
-            Invoke(nameof(SpawnNewBalloon), 2f);
-            Invoke(nameof(DestroySelf), 2f); // destroy AFTER spawn
-        }
-    }*/
-
-    void SpawnNewBalloon()
-    {
-        //Vector3 spawnPos = wallSpawnPoint.position;
-        //spawnPos.z = 0;
-        //spawnPos += wallSpawnPoint.up * 0.5f;
-        Instantiate(balloonPrefab, wallSpawnPoint.position, Quaternion.identity);
+        SpawnBalloon();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void SpawnBalloon()
     {
-        if (collision.CompareTag("purly") && !popped)
-        {
-            popped = true;
-            FindAnyObjectByType<ScoreManager>().AddScore(); // handles GameData.score++ too
-            Invoke(nameof(SpawnNewBalloon), 2f);
-            Invoke(nameof(HideBalloon), 0f); // hide immediately
-        }
+        Vector2 pos = new Vector2(
+            Random.Range(minSpawn.x, maxSpawn.x),
+            Random.Range(minSpawn.y, maxSpawn.y)
+        );
+
+        currentBalloon = Instantiate(balloonPrefab, pos, Quaternion.identity);
+
+        currentBalloon.GetComponent<Balloon>().spawner = this;
     }
 
-    void HideBalloon()
+    public void BalloonPopped()
     {
-        GetComponent<SpriteRenderer>().enabled = false;
-        GetComponent<Collider2D>().enabled = false;
+        Invoke(nameof(SpawnBalloon), 2f);
     }
 }

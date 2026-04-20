@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class GameData : MonoBehaviour
 {
     public static int score = 0;
+    public static string playerName = ""; 
 
     public static void SaveScore(string playerName)
     {

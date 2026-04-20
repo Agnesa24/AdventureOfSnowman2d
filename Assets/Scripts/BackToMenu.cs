@@ -7,12 +7,17 @@ public class BackToMenu : MonoBehaviour
 
     void Start()
     {
-        SceneManager.LoadScene("MenuScene");
+      
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    
+    public void GoToScene()
+    {
+        SceneManager.LoadScene("MenuScene");
     }
 }

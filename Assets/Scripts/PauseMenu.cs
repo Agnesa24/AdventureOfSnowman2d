@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Pause : MonoBehaviour
+public class PauseMenu : MonoBehaviour
 {
     public GameObject container;
     public TextMeshProUGUI scoreText;
@@ -42,6 +42,7 @@ public class Pause : MonoBehaviour
 
     public void NewGameButton()
     {
+        GameData.score = 0;
         Time.timeScale = 1f;
         SceneManager.LoadScene("SampleScene");
     }
@@ -53,13 +54,22 @@ public class Pause : MonoBehaviour
 
     public void EnterNameButton()
     {
+        GameData.playerName = nameInput.text;
         string playerName = nameInput.text;
         PlayerPrefs.SetString("PlayerName", playerName);
         PlayerPrefs.Save();
+        GameData.SaveScore(playerName);
     }
 
     public void HighScoreButton()
     {
+        // Save score BEFORE switching scenes
+        if (nameInput != null && !string.IsNullOrWhiteSpace(nameInput.text))
+        {
+            GameData.playerName = nameInput.text;
+            GameData.SaveScore(GameData.playerName);
+        }
+
         Time.timeScale = 1f;
         SceneManager.LoadScene("HighScoreScene");
     }

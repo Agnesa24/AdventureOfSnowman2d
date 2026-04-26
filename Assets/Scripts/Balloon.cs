@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Balloon : MonoBehaviour
 {
-    public WallBalloonRespawn spawner;
+    public RandomBalloonSpawner spawner;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

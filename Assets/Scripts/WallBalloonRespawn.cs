@@ -24,7 +24,7 @@ public class WallBalloonRespawn : MonoBehaviour
 
         currentBalloon = Instantiate(balloonPrefab, pos, Quaternion.identity);
 
-        currentBalloon.GetComponent<Balloon>().spawner = this;
+        //currentBalloon.GetComponent<Balloon>().spawner = this;
     }
 
     public void BalloonPopped()

@@ -70,11 +70,12 @@ using UnityEngine.UIElements;
     }
 
 }*/
-
+/*  // This is the code for the new input system
 public class prefabMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
     [SerializeField] private float rotationSpeed = 300f;
+    [SerializeField] private Animator animator;
 
     public InputActionAsset inputActions;
 
@@ -82,6 +83,9 @@ public class prefabMovement : MonoBehaviour
     private InputAction rotate;
 
     private Rigidbody2D rb;
+
+
+    this following code is when you want to use the new input system
 
     void Awake()
     {
@@ -120,4 +124,67 @@ public class prefabMovement : MonoBehaviour
             SceneManager.LoadScene("MenuScene");
         }
     }
+}*/
+
+public class prefabMovement : MonoBehaviour
+{
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private float rotationSpeed = 300f;
+    [SerializeField] private Animator animator;
+
+    public InputActionAsset inputActions;
+
+    private InputAction move;
+    private InputAction rotate;
+
+
+    private Rigidbody2D purly;
+
+    void Awake()
+    {
+        purly = GetComponent<Rigidbody2D>();
+
+    }
+
+    void FixedUpdate()
+    {
+        float moveX = 0f;
+        float moveY = 0f;
+
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+            moveY = 1f;
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+            moveY = -1f;
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            moveX = -1f;
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            moveX = 1f;
+
+        Vector2 movement = new Vector2(moveX, moveY).normalized;
+
+        purly.linearVelocity = movement * speed;
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Time.timeScale = 0f;
+            SceneManager.LoadScene("MenuScene");
+        }
+        HandleMovement();
+    }
+
+    private void HandleMovement()
+    {
+        bool up = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
+        bool down = Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
+        bool left = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
+        bool right = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow);
+
+        animator.SetBool("isJumping", up);
+        animator.SetBool("isWalkingLeft", left);
+        animator.SetBool("isWalkingRight", right);
+    }
+
 }

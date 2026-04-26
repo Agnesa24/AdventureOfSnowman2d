@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2596766787257265423}
   - component: {fileID: 2447031055610152258}
   - component: {fileID: 7874631125363697118}
-  - component: {fileID: -3286868652193386398}
-  m_Layer: 6
+  - component: {fileID: 8074637011941534476}
+  m_Layer: 8
   m_Name: balloonPrefab
   m_TagString: balloonTag
   m_Icon: {fileID: 0}
@@ -27,13 +27,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1641454850027869516}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.68791884, w: 0.72578764}
-  m_LocalPosition: {x: -17.407, y: 2.0919, z: 5}
-  m_LocalScale: {x: 0.16942032, y: 0.15964107, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.014943973, w: 0.9998884}
+  m_LocalPosition: {x: -17.414005, y: 2.0794163, z: 5}
+  m_LocalScale: {x: 0.10237534, y: 0.10243385, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 86.931}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -1.713}
 --- !u!58 &2447031055610152258
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -68,8 +68,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.042490188, y: 0.114464164}
-  m_Radius: 4.3016562
+  m_Offset: {x: -0.12255998, y: 0.11121657}
+  m_Radius: 4.221524
 --- !u!212 &7874631125363697118
 SpriteRenderer:
   serializedVersion: 2
@@ -129,7 +129,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &-3286868652193386398
+--- !u!114 &8074637011941534476
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

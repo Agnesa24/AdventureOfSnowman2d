@@ -31,13 +31,13 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseButton()
     {
-        container.SetActive(true);
+        //container.SetActive(true);
         Time.timeScale = 0f;
     }
 
     public void ResumeButton()
     {
-        container.SetActive(false);
+        //container.SetActive(false);
         Time.timeScale = 1f;
     }
 

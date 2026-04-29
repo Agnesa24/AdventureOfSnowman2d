@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2447031055610152258}
   - component: {fileID: 7874631125363697118}
   - component: {fileID: 6156688258035558940}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: rockBalloon
   m_TagString: balloonTag
   m_Icon: {fileID: 0}

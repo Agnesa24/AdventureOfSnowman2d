@@ -1,5 +1,7 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
@@ -128,63 +130,121 @@ public class prefabMovement : MonoBehaviour
 
 public class prefabMovement : MonoBehaviour
 {
-    [SerializeField] private float speed = 5f;
-    [SerializeField] private float rotationSpeed = 300f;
-    [SerializeField] private Animator animator;
+    private Rigidbody2D rb;
+    private float moveX;
+    public float MoveSpeed = 5f;
+    //public float JumpForce = 15f;
+    //public LayerMask Ground;
+    //public bool isGrounded;
 
-    public InputActionAsset inputActions;
+    // Assign a small empty child GameObject at the player's feet in the Inspector
+    //public Transform groundCheck;
+    //public float groundCheckRadius = 0.15f;
 
-    private InputAction move;
-    private InputAction rotate;
+    private Animator animator;
 
-
-    private Rigidbody2D purly;
-
-    void Awake()
+    private void Start()
     {
-        purly = GetComponent<Rigidbody2D>();
-
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
-    void FixedUpdate()
-    {
-        float moveX = 0f;
-        float moveY = 0f;
-
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-            moveY = 1f;
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-            moveY = -1f;
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-            moveX = -1f;
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-            moveX = 1f;
-
-        Vector2 movement = new Vector2(moveX, moveY).normalized;
-
-        purly.linearVelocity = movement * speed;
-    }
-
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Time.timeScale = 0f;
             SceneManager.LoadScene("MenuScene");
         }
-        HandleMovement();
+
+        // Reliable ground detection using an overlap circle at the player's feet
+        //isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, Ground);
+
+        moveX = Input.GetAxisRaw("Horizontal");
+
+        //if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        //{
+        //    // Reset Y velocity before jumping so double-tapping doesn't compound
+        //    rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
+        //    rb.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
+        //}
+
+        //animator.SetBool("isGrounded", isGrounded);
+        animator.SetBool("isWalkingLeft", moveX < 0);
+        animator.SetBool("isWalkingRight", moveX > 0);
     }
 
-    private void HandleMovement()
+    private void FixedUpdate()
     {
-        bool up = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
-        bool down = Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
-        bool left = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
-        bool right = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow);
-
-        animator.SetBool("isJumping", up);
-        animator.SetBool("isWalkingLeft", left);
-        animator.SetBool("isWalkingRight", right);
+        rb.linearVelocity = new Vector2(moveX * MoveSpeed, rb.linearVelocity.y);
     }
-
 }
+//public class prefabMovement : MonoBehaviour
+//{
+//    private Rigidbody2D rigidbody2D;
+//    private float moveX;
+//    private Vector2 movement; 
+
+//    public float MoveSpeed = 5f;
+//    public float JumpForce = 15f; 
+
+//    public LayerMask Ground;
+//    public bool isGrounded;
+//    private Animator animator;
+
+//    private void Start()
+//    {
+//        rigidbody2D = GetComponent<Rigidbody2D>();
+//        isGrounded = true; // Assuming the player starts on the ground
+//        animator = GetComponent<Animator>();
+//    }
+
+//    private void Update()
+//    {
+//        //isGrounded = false;
+//        if (Input.GetKeyDown(KeyCode.Escape))
+//        {
+//            Time.timeScale = 0f;
+//            SceneManager.LoadScene("MenuScene");
+//        }
+//        moveX = Input.GetAxisRaw("Horizontal");
+//        if(Input.GetKeyDown(KeyCode.Space) && isGrounded)
+//        {
+//            rigidbody2D.linearVelocity = new Vector2(rigidbody2D.linearVelocity.x, JumpForce);
+//            isGrounded = false; // Player is now in the air
+//        }
+
+//        animator.SetBool("isGrounded", isGrounded);
+//        animator.SetBool("isWalkingLeft", moveX < 0);
+//        animator.SetBool("isWalkingRight", moveX > 0);
+
+//    }
+
+//    private void FixedUpdate()
+//    {
+
+//        rigidbody2D.linearVelocity = new Vector2(
+//            moveX * MoveSpeed,
+//            rigidbody2D.linearVelocity.y
+//        );
+//    }
+
+//    private void OnCollisionStay2D(Collision2D collision)
+//    {
+//        if (((1 << collision.gameObject.layer) & Ground) != 0)
+//        {
+//            if (rigidbody2D.linearVelocity.y <= 0) // ONLY when falling or standing
+//            {
+//                isGrounded = true;
+//            }
+//        }
+//    }
+
+//    private void OnCollisionExit2D(Collision2D collision)
+//    {
+//        if (((1 << collision.gameObject.layer) & Ground) != 0)
+//        {
+//            isGrounded = false;
+//        }
+//    }
+//}

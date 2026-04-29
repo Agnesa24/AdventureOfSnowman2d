@@ -42,7 +42,7 @@ public class cannons : MonoBehaviour
 
         // random direction (right cannon = shoots left)
         Vector2 target = new Vector2(
-            Random.Range(-6.78f, 6.57f),
+            Random.Range(-18f, 17f), 
             Random.Range(-3.86f, 2.65f)
         );
 

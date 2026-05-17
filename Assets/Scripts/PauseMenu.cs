@@ -40,7 +40,7 @@ public class PauseMenu : MonoBehaviour
         //container.SetActive(false);
         Time.timeScale = 1f;
     }
-
+        
     public void NewGameButton()
     {
         GameData.score = 0;

@@ -8,7 +8,7 @@ public class rockPrefab : MonoBehaviour
     {
         if (collision.CompareTag("purly"))
         {
-            spawner.DestroyRock(); 
+            //spawner.DestroyRock(); 
             Destroy(gameObject);
         }
     }

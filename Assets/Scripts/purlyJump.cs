@@ -9,6 +9,10 @@ public class purlyJump : MonoBehaviour
 
     private float playerHalfHeight;
 
+    /*for sounds*/
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip jumpSound;
+
 
     private void Start()
     {
@@ -37,5 +41,6 @@ public class purlyJump : MonoBehaviour
     private void Jump()
     {
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        audioSource.PlayOneShot(jumpSound);
     }
 }

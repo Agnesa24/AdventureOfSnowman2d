@@ -18,6 +18,12 @@ public class ScoreManager : MonoBehaviour
         UpdateUI();
     }
 
+    public void SubtractScore()
+    {
+        GameData.score = GameData.score - 3;
+        UpdateUI();
+    }
+
     void UpdateUI()
     {
         scoreText.text = "Score: " + GameData.score;

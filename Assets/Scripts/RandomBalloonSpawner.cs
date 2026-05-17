@@ -5,9 +5,14 @@ public class RandomBalloonSpawner : MonoBehaviour
 {
 
     [SerializeField] private GameObject balloonPrefab;
-    [SerializeField] private GameObject rockPrefab;
+    //[SerializeField] private GameObject rockPrefab;
+    [SerializeField] private GameObject blackBalloonPrefab;
+
     private int balloonCount = 0;
-    private int rockCount = 0;
+    //private int rockCount = 0;
+    private int blackBalloonCount = 0;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,22 +31,38 @@ public class RandomBalloonSpawner : MonoBehaviour
             balloonCount++;
 
         }
-        if (rockPrefab != null && rockCount < 5)
+        //if (rockPrefab != null && rockCount < 5)
+        //{
+        //    var randomPosition = new Vector2(Random.Range(-18f, 17f),Random.Range(-3.86f, 2.65f)); //the first 6 for the x axis, the second one is the y axis 
+
+        //    GameObject rock = Instantiate(rockPrefab, randomPosition, Quaternion.identity);
+        //    rock.GetComponent<rockPrefab>().spawner = this;
+        //    rockCount++;
+
+        //}
+        if (blackBalloonPrefab != null && blackBalloonCount < 1)
         {
             var randomPosition = new Vector2(Random.Range(-18f, 17f),Random.Range(-3.86f, 2.65f)); //the first 6 for the x axis, the second one is the y axis 
-
-            GameObject rock = Instantiate(rockPrefab, randomPosition, Quaternion.identity);
-            rock.GetComponent<rockPrefab>().spawner = this;
-            rockCount++;
+    
+            GameObject balloon = Instantiate(blackBalloonPrefab, randomPosition, Quaternion.identity);
+            balloon.GetComponent<Balloon>().spawner = this;
+           
+            blackBalloonCount++;
 
         }
     }
 
 
-    public void DestroyRock()
+    //public void DestroyRock()
+    //{
+    //    rockCount--;
+    //}
+
+    public void DestroyBlackBalloon()
     {
-        rockCount--;
+        blackBalloonCount--;
     }
+
     public void BalloonPopped()
     {
         balloonCount--;

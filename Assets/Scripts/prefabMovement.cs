@@ -131,17 +131,29 @@ public class prefabMovement : MonoBehaviour
 public class prefabMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private Animator animator;
+
     private float moveX;
     public float MoveSpeed = 5f;
-    //public float JumpForce = 15f;
-    //public LayerMask Ground;
-    //public bool isGrounded;
 
-    // Assign a small empty child GameObject at the player's feet in the Inspector
-    //public Transform groundCheck;
-    //public float groundCheckRadius = 0.15f;
+    public LayerMask groundLayer;
+    private bool isGrounded;
 
-    private Animator animator;
+    /*for the splash effect*/
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private GameObject splashEffect;
+
+
+    /*for the sounds*/
+    [SerializeField] private AudioSource audioSource;
+
+    [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private AudioClip splashSound;
+    [SerializeField] private AudioClip yellowBalloonSound;
+    [SerializeField] private AudioClip blackBalloonSound;
+
+    private float splashTimer;
+    public float splashDelay = 0.3f;
 
     private void Start()
     {
@@ -151,33 +163,75 @@ public class prefabMovement : MonoBehaviour
 
     private void Update()
     {
+        // Exit game to menu
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Time.timeScale = 0f;
             SceneManager.LoadScene("MenuScene");
         }
 
-        // Reliable ground detection using an overlap circle at the player's feet
-        //isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, Ground);
-
+        // Movement input
         moveX = Input.GetAxisRaw("Horizontal");
 
-        //if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        //{
-        //    // Reset Y velocity before jumping so double-tapping doesn't compound
-        //    rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
-        //    rb.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
-        //}
+        // Ground check
+        isGrounded = Physics2D.Raycast(
+            transform.position,
+            Vector2.down,
+            0.5f,
+            groundLayer
+        );
 
-        //animator.SetBool("isGrounded", isGrounded);
+        // Send values to Animator
+        animator.SetBool("isGrounded", isGrounded);
+        //animator.SetFloat("moveX", moveX);
+
+        // Optional directional booleans (only if you still use them in Animator)
         animator.SetBool("isWalkingLeft", moveX < 0);
         animator.SetBool("isWalkingRight", moveX > 0);
+
+
+        if (moveX != 0 && isGrounded)
+        {
+            splashTimer += Time.deltaTime;
+
+            if (splashTimer >= splashDelay)
+            {
+                SpawnSplash();
+                splashTimer = 0f;
+            }
+        }
+        else
+        {
+            splashTimer = splashDelay;
+        }
     }
 
     private void FixedUpdate()
     {
         rb.linearVelocity = new Vector2(moveX * MoveSpeed, rb.linearVelocity.y);
     }
+
+
+    private void SpawnSplash()
+    {
+        if (!isGrounded) return;
+
+        GameObject splash = Instantiate(
+            splashEffect,
+            groundCheck.position,
+            Quaternion.identity
+        );
+
+        Destroy(splash, 0.5f);
+
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(splashSound);
+        }
+    }
+
+
+
+
 }
 //public class prefabMovement : MonoBehaviour
 //{

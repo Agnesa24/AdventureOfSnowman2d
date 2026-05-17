@@ -1,22 +1,23 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraFollow : MonoBehaviour
 {
-    public float FollowSpeed = 2f;
     public Transform target;
 
-    void Update()
-    {
-        Vector3 newPos = new Vector3(
-            target.position.x,
-            target.position.y,
-            -10f
-        );
+    public float minX;
+    public float maxX;
+    public float fixedY = 0f;
 
-        transform.position = Vector3.Slerp(
-            transform.position,
-            newPos,
-            FollowSpeed * Time.deltaTime
-        );
+    void LateUpdate()
+    {
+        if (target == null)
+        {
+            SceneManager.LoadScene("MenuScene"); 
+            return;
+        }
+
+        float clampedX = Mathf.Clamp(target.position.x, minX, maxX);
+        transform.position = new Vector3(clampedX, fixedY, transform.position.z);
     }
 }
